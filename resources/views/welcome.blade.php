@@ -86,7 +86,7 @@
 
                     <a href="graphiql">PlayGround</a>
                     <a href="images/eer_diagram.jpg">EER Diagram</a>
-                    <a href="images/example_graphql_use.jpg">Example GraphQL use</a>
+                    <a href="images/demo_graphiQL.gif">Example video GraphQL use</a>
 
                 </div>
             </div>
