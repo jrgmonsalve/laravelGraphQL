@@ -8,20 +8,21 @@
 
 namespace App\GraphQL\Type;
 
-use App\Category;
+use App\Product;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 
-class CategoriesType extends GraphQLType
+class ProductsType extends GraphQLType
 {
     protected $attributes = [
-        'name'          => 'Categories',
+        'name'          => 'Products',
         'description'   => 'A type',
-        'model'         => Category::class,
+        'model'         => Product::class,
     ];
 
     /**
+     *
      * @return array
      */
     public function fields()
@@ -35,14 +36,30 @@ class CategoriesType extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'The name of category.'
             ],
-            'photo' => [
+            'description' => [
                 'type' => Type::string(),
-                'description' => 'Name of image file'
+                'description' => 'Description of product.'
             ],
-//             relational field
-            'products' => [
-                'type' => Type::listOf(GraphQL::type('products')),
-                'description' => 'Products in this category'
+            'price' => [
+                'type' => Type::float(),
+                'description' => 'Price of product.'
+            ],
+            'photo1' => [
+                'type' => Type::string(),
+                'description' => 'photo1 Name of image file'
+            ],
+            'photo2' => [
+                'type' => Type::string(),
+                'description' => 'photo2 Name of image file'
+            ],
+            'photo3' => [
+                'type' => Type::string(),
+                'description' => 'photo3 Name of image file'
+            ],
+            // relational field
+            'category' => [
+                'type' => GraphQL::type('categories'),//is defined by the table's name
+                'description' => 'Product\'s category'
             ]
         ];
     }
@@ -58,5 +75,10 @@ class CategoriesType extends GraphQLType
     protected function resolvePhotoField($root, $args)
     {
         return strtolower($root->photo);
+    }
+
+    protected function resolvePriceField($root, $args)
+    {
+        return $root->price;
     }
 }

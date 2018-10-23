@@ -101,8 +101,11 @@ return [
         'default' => [
             'query' => [
                 'categories' => \App\GraphQL\Query\CategoriesQuery::class,
+                'products' => \App\GraphQL\Query\ProductsQuery::class,
             ],
-            'mutation' => [],
+            'mutation' => [
+                'newCategory' => \App\GraphQL\Mutation\NewCategoryMutation::class
+            ],
             'middleware' => [],
             'method' => ['get', 'post'],
         ],
@@ -118,7 +121,8 @@ return [
     // ]
     //
     'types' => [
-        'categories'  => \App\GraphQL\Type\CategoriesType::class
+        'categories'  => \App\GraphQL\Type\CategoriesType::class,
+        'products'  => \App\GraphQL\Type\ProductsType::class
     ],
 
     // This callable will be passed the Error object for each errors GraphQL catch.

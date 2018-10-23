@@ -29,7 +29,7 @@ class CategoriesQuery extends Query
     }
 
     /**
-     * Arguments enables to make filters
+     * Arguments to describe model
      * @return array
      */
     public function args()
